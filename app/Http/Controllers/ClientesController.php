@@ -106,11 +106,10 @@ class ClientesController extends Controller
         $cliente = Cliente::findorFail($id);
         $cliente->tipocliente = TipoCliente::findOrFail($cliente->tipocliente);
 
-        $tipos = TipoCliente::orderby('id')->get();
         $generos = ['Feminino', 'Masculino'];
         $estados = ['Solteiro', 'Casado', 'Separado', 'Amasiado', 'Viuvo'];
 
-        return view('clientes.edit', ['cliente' => $cliente, 'tipos' => $tipos, 'generos' => $generos, 'estados'=> $estados]);
+        return view('clientes.edit', ['cliente' => $cliente, 'generos' => $generos, 'estados'=> $estados]);
     }
 
     /**
@@ -175,6 +174,8 @@ class ClientesController extends Controller
     public function destroy($id)
     {
         $cliente = Cliente::findOrFail($id);
-        return $cliente->delete();
+        $cliente->delete();
+
+        return redirect()->route('clientes.index')->with('success', 'Cliente removido com sucesso!');
     }
 }

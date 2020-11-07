@@ -76,7 +76,7 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div class="col-4">
                 <a class="navbar-brand" href="{{ url('/inicio') }}">HelpLawer</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
@@ -87,42 +87,42 @@
                 <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/inicio') }}">Home</a>
+                        <a class="nav-link text-white" href="{{ url('/inicio') }}">Home</a>
                     </li>
                     <!--Cadastros-->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Cadastros
                         </a>
-                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-secondary" href="#">Advogados</a>
-                            <a class="dropdown-item text-secondary" href="{{route('clientes.index')}}">Clientes</a>
-                            <a class="dropdown-item text-secondary" href="#">Usuários</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-primary" href="#">Advogados</a>
+                            <a class="dropdown-item text-primary" href="{{route('clientes.index')}}">Clientes</a>
+                            <a class="dropdown-item text-primary" href="#">Usuários</a>
                         </div>
                     </li>
                     <!--Movimentos-->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Movimentos
                         </a>
-                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-secondary" href="#">Processos</a>
-                            <a class="dropdown-item text-secondary" href="#">Agenda</a>
-                            <a class="dropdown-item text-secondary" href="#">Tarefas</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-primary" href="#">Processos</a>
+                            <a class="dropdown-item text-primary" href="#">Agenda</a>
+                            <a class="dropdown-item text-primary" href="#">Tarefas</a>
                         </div>
                     </li>
                     <!--Relatórios-->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Relatórios
                         </a>
-                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item text-secondary" href="#">Clientes</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item text-primary" href="#">Clientes</a>
 
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre</span></a>
+                        <a class="nav-link text-white" href="#">Sobre</span></a>
                     </li>
                     </ul>
                 </div>
@@ -141,10 +141,11 @@
         </div>
     </body>
     <footer>
-        <?php date_default_timezone_set('America/Sao_Paulo') ?>
-        <p class="text-center">Desenvolvido por Marcelo Jr -
-        {{strftime('%d-%m-%Y %H:%M', (strtotime('now')))}}</p>
-        <br>
+        <div class="pt-2 bg-primary text-white fixed-bottom">
+            <?php date_default_timezone_set('America/Sao_Paulo') ?>
+            <p class="text-center">Desenvolvido por MJr Soluções Tecnológicas -
+            {{strftime('%d-%m-%Y %H:%M', (strtotime('now')))}}</p>
+        </div>
     </footer>
 
     <script>

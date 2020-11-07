@@ -3,15 +3,12 @@
 
 <h2 class="text-center">Listar Clientes</h2>
 <br><br>
-<form action="/clientes/create">
-    <div class="field">
-        <div class="control">
-            <button type="submit" class="btn btn-success">Novo Cliente</button>
-        </div>
+<div class="col-12 pb-2">
+    <div class="control">
+        <a class="btn btn-success" href="{{ route('clientes.create') }}">Novo Cliente</a>
     </div>
-</form>
-<br>
-<div class="table-responsive">
+</div>
+<div class="table-responsive col-12">
     <table class="table table-striped table-hover">
     <thead class="thead-dark">
     <tr>
@@ -32,10 +29,10 @@
             <td>{{$cliente->fone2}}</td>
             <td>{{$cliente->email}}</td>
             <td>
-                <a class="btn btn-secondary" href="{{ route('clientes.show', $cliente->id) }}">Mostrar</a>
-                <a class="btn btn-primary" href="{{ route('clientes.edit', $cliente->id) }}">Editar</a>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$cliente->id}}">
-                    Remover
+                <a class="btn btn-info mr-2" href="{{ route('clientes.show', $cliente->id) }}">Mostrar</a>
+                <a class="btn btn-warning text-white mr-2" href="{{ route('clientes.edit', $cliente->id) }}">Editar</a>
+                <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#exampleModal{{$cliente->id}}">
+                    Apagar
                 </button>
             </td>
         </tr>
