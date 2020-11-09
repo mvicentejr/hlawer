@@ -1,108 +1,101 @@
 @extends('layout')
 @section('content')
 <div class="pull-right">
-    <h2 class="text-center">Mostrar Cliente</h2>
+    <h2 class="text-center">Mostrar Advogado</h2>
 </div>
 <div class="jumbotron">
     <div class="col-lg-6 margin-tb">
             <div class="field">
-                <strong>ID: </strong> {{$cliente->id}}
+                <strong>ID: </strong> {{$advogado->id}}
             </div>
             <div class="field">
-                <strong>Tipo: </strong> {{$cliente->tipocliente->descricao}}
+                <strong>Data de Cadastro: </strong> {{date('d/m/Y H:i', strtotime($advogado->datacadastro))}}
             </div>
             <div class="field">
-                <strong>Data de Cadastro: </strong> {{date('d/m/Y H:i', strtotime($cliente->datacadastro))}}
+                <strong>Nome: </strong> {{$advogado->nome}}
             </div>
             <div class="field">
-                <strong>Nome: </strong> {{$cliente->nome}}
+                <strong>Area: </strong> {{$advogado->area->descricao}}
             </div>
             <div class="field">
-                <div class="form-row">
-                    <div class="col-6">
-                        <strong>CNPJ: </strong> {{$cliente->cnpj}}
-                    </div>
-                    <div class="col-6">
-                        <strong>Inscrição Estadual: </strong> {{$cliente->ie}}
-                    </div>
-                </div>
+                <strong>OAB: </strong> {{$advogado->cpf}}
             </div>
             <div class="field">
-                <strong>CPF: </strong> {{$cliente->cpf}}
+                <strong>CPF: </strong> {{$advogado->cpf}}
             </div>
             <div class="field">
                 <div class="form-row">
                     <div class="col-6">
-                        <strong>RG: </strong> {{$cliente->rg}}
+                        <strong>RG: </strong> {{$advogado->rg}}
                     </div>
                     <div class="col">
-                        <strong>Orgão Emissor: </strong> {{$cliente->oemissor}}
+                        <strong>Orgão Emissor: </strong> {{$advogado->oemissor}}
                     </div>
                 </div>
             </div>
             <div class="field">
-                <strong>Data de Nascimento: </strong> {{date('d/m/Y', strtotime($cliente->datanasc))}}
+                <strong>Data de Nascimento: </strong> {{date('d/m/Y', strtotime($advogado->datanasc))}}
             </div>
             <div class="field">
-                <strong>Gênero: </strong> {{$cliente->genero}}
+                <strong>Gênero: </strong> {{$advogado->genero}}
             </div>
             <div class="field">
-                <strong>Estado Civil: </strong> {{$cliente->estcivil}}
+                <strong>Estado Civil: </strong> {{$advogado->estcivil}}
             </div>
             <div class="field">
-                <strong>Cônjuge: </strong> {{$cliente->conjuge}}
+                <strong>Cônjuge: </strong> {{$advogado->conjuge}}
             </div>
             <div class="field">
-                <strong>CEP: </strong> {{$cliente->cep}}
+                <strong>CEP: </strong> {{$advogado->cep}}
             </div>
             <div class="field">
                 <div class="form-row">
                     <div class="col-8">
-                        <strong>Rua: </strong> {{$cliente->rua}}
+                        <strong>Rua: </strong> {{$advogado->rua}}
                     </div>
                     <div class="col">
-                        <strong>Número: </strong> {{$cliente->numero}}
+                        <strong>Número: </strong> {{$advogado->numero}}
                     </div>
                 </div>
             </div>
             <div class="field">
                 <div class="form-row">
                     <div class="col-6">
-                        <strong>Bairro: </strong> {{$cliente->bairro}}
+                        <strong>Bairro: </strong> {{$advogado->bairro}}
                     </div>
                     <div class="col">
-                        <strong>Complemento: </strong> {{$cliente->complemento}}
+                        <strong>Complemento: </strong> {{$advogado->complemento}}
                     </div>
                 </div>
             </div>
             <div class="field">
                 <div class="form-row">
                     <div class="col-6">
-                        <strong>Cidade: </strong> {{$cliente->cidade}}
+                        <strong>Cidade: </strong> {{$advogado->cidade}}
                     </div>
                     <div class="col">
-                        <strong>Estado: </strong> {{$cliente->uf}}
+                        <strong>Estado: </strong> {{$advogado->uf}}
                     </div>
                 </div>
             </div>
             <div class="field">
                 <div class="form-row">
                     <div class="col-6">
-                        <strong>Telefone 1: </strong> {{$cliente->fone1}}
+                        <strong>Telefone 1: </strong> {{$advogado->fone1}}
                     </div>
                     <div class="col">
-                        <strong>Telefone 2: </strong> {{$cliente->fone2}}
+                        <strong>Telefone 2: </strong> {{$advogado->fone2}}
                     </div>
                 </div>
             </div>
             <div class="field">
-                <strong>Email: </strong> {{$cliente->email}}
+                <strong>Email: </strong> {{$advogado->email}}
             </div>
             <div class="field">
-                <strong>Observações: </strong> {{$cliente->observacao}}
+                <strong>Observações: </strong> {{$advogado->observacao}}
             </div>
             <br>
-            <a class="btn btn-dark" href="{{route('clientes.index')}}">Voltar</a>
+            <a class="btn btn-dark" href="{{route('advogados.index')}}">Voltar</a>
         </div>
     </div>
 

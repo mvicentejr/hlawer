@@ -95,9 +95,9 @@
                             Cadastros
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-primary" href="#">Advogados</a>
+                            <a class="dropdown-item text-primary" href="{{route('advogados.index')}}">Advogados</a>
                             <a class="dropdown-item text-primary" href="{{route('clientes.index')}}">Clientes</a>
-                            <a class="dropdown-item text-primary" href="#">Usuários</a>
+                            <a class="dropdown-item text-primary" href="{{route('usuarios.index')}}">Usuários</a>
                         </div>
                     </li>
                     <!--Movimentos-->

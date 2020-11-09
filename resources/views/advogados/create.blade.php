@@ -1,25 +1,12 @@
 @extends('layout')
 @section('content')
 <div class="pull-right">
-    <h2 class="text-center">Cadastrar Novo Cliente</h2>
+    <h2 class="text-center">Cadastrar Novo Advogado</h2>
 </div>
 <div class="jumbotron">
     <div class="col-lg-6 margin-tb">
-        <form class="form" action="/clientes" method="POST">
+        <form class="form" action="/advogados" method="POST">
         @csrf
-            <div class="field">
-                <div class="form-row align-items-center">
-                    <div class="col-4">
-                    <label class="mr-sm-2" for="tipo"><strong>Tipo: </strong></label>
-                    <select class="custom-select mr-sm-2" id="tipocliente" name="tipocliente">
-                            <option selected disabled>Selecione uma opção</option>
-                        @foreach ($tipos as $tipo)
-                            <option value="{{$tipo->id}}">{{$tipo->descricao}}</option>
-                        @endforeach
-                    </select>
-                    </div>
-                </div>
-            </div>
             <div class="field">
                 <strong>Nome: </strong>
                 <div class="control">
@@ -27,18 +14,24 @@
                 </div>
             </div>
             <div class="field">
+                <div class="form-row align-items-center">
+                    <div class="col-4">
+                    <label class="mr-sm-2" for="area"><strong>Área: </strong></label>
+                    <select class="custom-select mr-sm-2" id="area" name="area">
+                            <option selected disabled>Selecione uma opção</option>
+                        @foreach ($areas as $area)
+                            <option value="{{$area->id}}">{{$area->descricao}}</option>
+                        @endforeach
+                    </select>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
                 <div class="form-row">
                     <div class="col-6">
-                        <strong>CNPJ: </strong>
+                        <strong>OAB: </strong>
                         <div class="control">
-                            <input type="text" class="input" name="cnpj" id="cnpj" pattern="/^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}|(\d{14})$" placeholder="88.888.888/8888-88">
-                        </div>
-                    </div>
-
-                    <div class="col-6">
-                        <strong>Inscrição Estadual: </strong>
-                        <div class="control">
-                            <input type="text" class="input" name="ie" id="ie" placeholder="888.888.888.888">
+                            <input type="text" class="input" name="oab">
                         </div>
                     </div>
                 </div>
@@ -48,7 +41,7 @@
                     <div class="col-6">
                         <strong>CPF: </strong>
                         <div class="control">
-                            <input type="text" class="input" name="cpf" id="cpf" pattern="^(\d{3}\.\d{3}\.\d{3}-\d{2})|(\d{11})$" placeholder="888.888.888-88">
+                            <input type="text" class="input" name="cpf" required pattern="^(\d{3}\.\d{3}\.\d{3}-\d{2})|(\d{11})$" placeholder="888.888.888-88">
                         </div>
                     </div>
                 </div>
@@ -58,13 +51,13 @@
                     <div class="col-6">
                         <strong>RG: </strong>
                         <div class="control">
-                            <input type="text" class="input" name="rg" id="rg" placeholder="88.888.888-8">
+                            <input type="text" class="input" name="rg" placeholder="88.888.888-8">
                         </div>
                     </div>
                     <div class="col-3">
                         <strong>Órgão Emissor: </strong>
                         <div class="control">
-                            <input type="text" class="input" name="oemissor" id="oemissor">
+                            <input type="text" class="input" name="oemissor">
                         </div>
                     </div>
                 </div>
@@ -74,7 +67,7 @@
                     <div class="col-4">
                     <strong>Data de Nascimento: </strong>
                     <div class="control">
-                        <input type="date" class="input" name="datanasc" id="datanasc">
+                        <input type="date" class="input" name="datanasc">
                     </div>
                     </div>
                 </div>
@@ -108,7 +101,7 @@
             <div class="field">
                 <strong>Cônjuge: </strong>
                 <div class="control">
-                    <input type="text" class="input" name="conjuge" id="conjuge">
+                    <input type="text" class="input" name="conjuge">
                 </div>
             </div>
             <div class="field">
@@ -200,7 +193,7 @@
             <br><br>
             <input type="submit" class="button btn-success mr-2" value="Gravar">
             <input type="reset" class="button btn-secondary mr-2" value="Limpar">
-            <a class="btn btn-dark mr-2" href="{{route('clientes.index')}}">Voltar</a>
+            <a class="btn btn-dark mr-2" href="{{route('advogados.index')}}">Voltar</a>
         </form>
     </div>
 </div>
@@ -216,42 +209,5 @@
         </ul>
     </div>
     @endif
-
-    <script>
-        let tipocliente = $("#tipocliente");
-        tipocliente.change(function(){
-            var inputcpf = $("#cpf");
-            var inputcnpj = $("#cnpj");
-            var inputie = $("#ie");
-            var inputrg = $("#rg");
-            var inputoemissor = $("#oemissor");
-            var inputdatanasc = $("#datanasc");
-            var inputgenero = $("#genero");
-            var inputestcivil = $("#estcivil");
-            var inputconjuge = $("#conjuge");
-            if (tipocliente.val() == 1){
-                inputcnpj.prop("disabled", true);
-                inputie.prop("disabled", true);
-                inputcpf.prop("disabled", false);
-                inputrg.prop("disabled", false);
-                inputoemissor.prop("disabled", false);
-                inputdatanasc.prop("disabled", false);
-                inputgenero.prop("disabled", false);
-                inputestcivil.prop("disabled", false);
-                inputconjuge.prop("disabled", false);
-            }
-            else{
-                inputcnpj.prop("disabled", false);
-                inputie.prop("disabled", false);
-                inputcpf.prop("disabled", true);
-                inputrg.prop("disabled", true);
-                inputoemissor.prop("disabled", true);
-                inputdatanasc.prop("disabled", true);
-                inputgenero.prop("disabled", true);
-                inputestcivil.prop("disabled", true);
-                inputconjuge.prop("disabled", true);
-            }
-        });
-    </script>
 
 @endsection
