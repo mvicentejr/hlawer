@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdvogadosController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\ProcessosController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,4 +53,15 @@ Route::group(['prefix' => '/usuarios'], function () {
     Route::get('/{id}/edit', [UsuariosController::class, 'edit'])->name('usuarios.edit');
     Route::put('/{id}', [UsuariosController::class, 'update'])->name('usuarios.update');
     Route::delete('/{id}', [UsuariosController::class, 'destroy'])->name('usuarios.destroy');
+});
+
+Route::group(['prefix' => '/processos'], function () {
+    Route::get('/', [ProcessosController::class, 'index'])->name('processos.index');
+    Route::get('/create', [ProcessosController::class, 'create'])->name('processos.create');
+    Route::get('/{id}', [ProcessosController::class, 'show'])->name('processos.show');
+    Route::post('/', [ProcessosController::class, 'store'])->name('processos.store');
+    Route::get('/{id}/edit', [ProcessosController::class, 'edit'])->name('processos.edit');
+    Route::put('/{id}', [ProcessosController::class, 'update'])->name('processos.update');
+    Route::get('/{id}/getstatus', [ProcessosController::class, 'getstatus'])->name('processos.getstatus');
+    Route::get('/{id}/mudar', [ProcessosController::class, 'mudar'])->name('processos.mudar');
 });
