@@ -9,7 +9,7 @@ class Processo extends Model
 {
     protected $table = 'processos';
 
-    protected $fillable = ['id', 'foro', 'vara', 'statusprocesso', 'datainicio', 'numprocesso',
+    protected $fillable = ['id', 'statusprocesso', 'foro', 'vara', 'datainicio', 'numprocesso',
                         'area', 'classe', 'assunto', 'parte2', 'advparte2', 'descricao'];
 
     public $timestamps = false;

@@ -48,7 +48,7 @@ class ProcessosController extends Controller
             'foro' => 'required',
             'vara' => 'required',
             'statusprocesso' => 'required',
-            'data_inicio' => 'required',
+            'datainicio' => 'required',
             'numprocesso' => 'required',
             'area' => 'required',
             'classe' => 'required',
@@ -104,7 +104,7 @@ class ProcessosController extends Controller
             'foro' => 'required',
             'vara' => 'required',
             'statusprocesso' => 'required',
-            'data_inicio' => 'required',
+            'datainicio' => 'required',
             'numprocesso' => 'required',
             'area' => 'required',
             'classe' => 'required',
@@ -150,7 +150,7 @@ class ProcessosController extends Controller
 
     public function getstatus($id)
     {
-        $statusprocesso = StatusProcesso::finOrFail($id);
+        $statusprocesso = StatusProcesso::findOrFail($id);
         $processos = Processo::query()->where('statusprocesso','=',$statusprocesso->id)->select(['*'])->orderBy('id')->get();
         foreach ($processos as $processo){
             $processo->statusprocesso = StatusProcesso::findOrFail($processo->statusprocesso);
