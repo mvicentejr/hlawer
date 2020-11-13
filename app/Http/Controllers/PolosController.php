@@ -66,7 +66,12 @@ class PolosController extends Controller
      */
     public function show($id)
     {
-        //
+        $polo = Polo::findOrFail($id);
+        $polo->tipopolo = TipoPolo::findOrFail($polo->tipopolo);
+        $polo->parte = Parte::findOrFail($polo->parte);
+        $polo->cliente = Cliente::findOrFail($polo->cliente);
+        $polo->processo_id = Processo::findOrFail($polo->processo_id);
+        return view('polos.show', ['polo' => $polo]);
     }
 
     /**
@@ -77,7 +82,17 @@ class PolosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $polo = Polo::findorFail($id);
+        $polo->tipopolo = TipoPolo::findOrFail($polo->tipopolo);
+        $polo->parte = Parte::findOrFail($polo->parte);
+        $polo->cliente = Cliente::findOrFail($polo->cliente);
+        $polo->processo_id = Processo::findOrFail($polo->processo_id);
+
+        $tipopolos = TipoPolo::orderby('id')->get();
+        $partes = Parte::orderby('id')->get();
+        $clientes = Cliente::orderby('nome')->get();
+
+        return view('polos.edit', ['polo' => $polo, 'tipopolos' => $tipopolos, 'partes' => $partes, 'clientes'=> $clientes]);
     }
 
     /**
@@ -89,7 +104,20 @@ class PolosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'tipopolo' => 'required',
+            'parte' => 'required',
+            'cliente' => 'required',
+            'processo_id' => 'required'
+        ]);
+
+        $polo = Polo::findOrFail($id);
+
+        $polo->update($request->all());
+
+        $processo = $request->input('processo_id');
+
+        return redirect()->route('processos.show', $processo)->with('success', 'Polo atualizado com sucesso!');
     }
 
     /**
@@ -100,11 +128,21 @@ class PolosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $polo = Polo::findOrFail($id);
+        $polo->processo_id = Processo::findOrFail($polo->processo_id);
+        $processo = $polo->processo_id->id;
+        $polo->delete();
+
+        return redirect()->route('processos.show', $processo)->with('success', 'Polo removido com sucesso!');
     }
 
     public function apagar($id)
     {
-        //
+        $polo = Polo::findOrFail($id);
+        $polo->tipopolo = TipoPolo::findOrFail($polo->tipopolo);
+        $polo->parte = Parte::findOrFail($polo->parte);
+        $polo->cliente = Cliente::findOrFail($polo->cliente);
+        $polo->processo_id = Processo::findOrFail($polo->processo_id);
+        return view('polos.apagar', ['polo' => $polo]);
     }
 }

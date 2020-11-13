@@ -82,4 +82,16 @@
     <a class="btn btn-dark" href="{{route('processos.index')}}">Voltar</a>
 </div>
 
+<br><br>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Opa!!!</strong>Existem erros na entrada de dados. <br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
 @endsection
