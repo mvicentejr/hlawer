@@ -2,7 +2,11 @@
 
 use App\Http\Controllers\AdvogadosController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\EventosController;
+use App\Http\Controllers\MovimentosController;
+use App\Http\Controllers\PolosController;
 use App\Http\Controllers\ProcessosController;
+use App\Http\Controllers\TarefasController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
@@ -64,4 +68,45 @@ Route::group(['prefix' => '/processos'], function () {
     Route::put('/{id}', [ProcessosController::class, 'update'])->name('processos.update');
     Route::get('/{id}/getstatus', [ProcessosController::class, 'getstatus'])->name('processos.getstatus');
     Route::get('/{id}/mudar', [ProcessosController::class, 'mudar'])->name('processos.mudar');
+    Route::put('/{id}', [ProcessosController::class, 'mudastat'])->name('processos.mudastat');
+});
+
+Route::group(['prefix' => '/polos'], function () {
+    Route::get('/{id}/create', [PolosController::class, 'create'])->name('polos.create');
+    Route::get('/{id}', [PolosController::class, 'show'])->name('polos.show');
+    Route::post('/', [PolosController::class, 'store'])->name('polos.store');
+    Route::get('/{id}/edit', [PolosController::class, 'edit'])->name('polos.edit');
+    Route::put('/{id}', [PolosController::class, 'update'])->name('polos.update');
+    Route::delete('/{id}', [PolosController::class, 'destroy'])->name('polos.destroy');
+    Route::get('/{id}/apagar', [PolosController::class, 'apagar'])->name('polos.apagar');
+});
+
+Route::group(['prefix' => '/movimentos'], function () {
+    Route::get('/create', [MovimentosController::class, 'create'])->name('movimentos.create');
+    Route::get('/{id}', [MovimentosController::class, 'show'])->name('movimentos.show');
+    Route::post('/', [MovimentosController::class, 'store'])->name('movimentos.store');
+    Route::get('/{id}/edit', [MovimentosController::class, 'edit'])->name('movimentos.edit');
+    Route::put('/{id}', [MovimentosController::class, 'update'])->name('movimentos.update');
+    Route::delete('/{id}', [MovimentosController::class, 'destroy'])->name('movimentos.destroy');
+    Route::get('/{id}/apagar', [MovimentosController::class, 'apagar'])->name('movimentos.apagar');
+});
+
+Route::group(['prefix' => '/tarefas'], function () {
+    Route::get('/', [TarefasController::class, 'index'])->name('tarefas.index');
+    Route::get('/create', [TarefasController::class, 'create'])->name('tarefas.create');
+    Route::get('/{id}', [TarefasController::class, 'show'])->name('tarefas.show');
+    Route::post('/', [TarefasController::class, 'store'])->name('tarefas.store');
+    Route::get('/{id}/edit', [TarefasController::class, 'edit'])->name('tarefas.edit');
+    Route::put('/{id}', [TarefasController::class, 'update'])->name('tarefas.update');
+    Route::delete('/{id}', [TarefasController::class, 'destroy'])->name('tarefas.destroy');
+});
+
+Route::group(['prefix' => '/eventos'], function () {
+    Route::get('/', [EventosController::class, 'index'])->name('eventos.index');
+    Route::get('/create', [EventosController::class, 'create'])->name('eventos.create');
+    Route::get('/{id}', [EventosController::class, 'show'])->name('eventos.show');
+    Route::post('/', [EventosController::class, 'store'])->name('eventos.store');
+    Route::get('/{id}/edit', [EventosController::class, 'edit'])->name('eventos.edit');
+    Route::put('/{id}', [EventosController::class, 'update'])->name('eventos.update');
+    Route::delete('/{id}', [EventosController::class, 'destroy'])->name('eventos.destroy');
 });

@@ -38,7 +38,7 @@
             <td>
                 <a class="btn btn-info mr-2" href="{{ route('processos.show', $processo->id) }}">Mostrar</a>
                 <a class="btn btn-warning text-white mr-2" href="{{ route('processos.edit', $processo->id) }}">Editar</a>
-                <a class="btn btn-danger mr-2" href="{{ route('processos.getstatus', $processo->id) }}">Status</a>
+                <a class="btn btn-danger mr-2" href="{{ route('processos.mudar', $processo->id) }}">Status</a>
             </td>
         </tr>
 

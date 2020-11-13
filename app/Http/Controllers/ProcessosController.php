@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Area;
+use App\Models\Cliente;
 use App\Models\Movimento;
+use App\Models\Parte;
+use App\Models\Polo;
 use App\Models\Processo;
 use App\Models\StatusProcesso;
+use App\Models\TipoPolo;
 use Illuminate\Http\Request;
 
 class ProcessosController extends Controller
@@ -71,7 +75,14 @@ class ProcessosController extends Controller
         $processo = Processo::findOrFail($id);
         $processo->statusprocesso = StatusProcesso::findOrFail($processo->statusprocesso);
         $processo->area = Area::findOrFail($processo->area);
-        return view('processos.show', ['processo' => $processo]);
+        $polos = Polo::query()->where('processo_id','=',$processo->id)->select(['*'])->orderBy('id')->get();
+        foreach ($polos as $polo){
+            $polo->tipopolo = TipoPolo::findOrFail($polo->tipopolo);
+            $polo->parte = Parte::findOrFail($polo->parte);
+            $polo->cliente = Cliente::findOrFail($polo->cliente);
+        }
+
+        return view('processos.show', ['processo' => $processo, 'polos' => $polos]);
     }
 
     /**
@@ -115,17 +126,6 @@ class ProcessosController extends Controller
 
         $processo->update($request->all());
 
-        if ($processo->statusprocesso != 1){
-            $statusprocesso = StatusProcesso::findOrFail($processo->statusprocesso);
-            $insert = [
-                'processo' => $processo->id,
-                'tipomov' => 2,
-                'datamov' => date('Y/m/d'),
-                'descricao' => $statusprocesso->descricao
-            ];
-            Movimento::create($insert);
-        }
-
         $numprocesso = $request->input('numprocesso');
 
         return redirect()->route('processos.index')->with('success', 'Processo '. $numprocesso .' atualizado com sucesso!');
@@ -157,5 +157,31 @@ class ProcessosController extends Controller
             $processo->area = Area::findOrFail($processo->area);
         }
         return view('processos.getstatus', ['processos' => $processos]);
+    }
+
+    public function mudastat(Request $request, $id)
+    {
+        $this->validate($request, [
+            'statusprocesso' => 'required'
+        ]);
+
+        $processo = Processo::findOrFail($id);
+
+        $processo->update($request->all());
+
+        if ($processo->statusprocesso != 1){
+            $statusprocesso = StatusProcesso::findOrFail($processo->statusprocesso);
+            $insert = [
+                'processo' => $processo->id,
+                'tipomov' => 2,
+                'datamov' => date('Y/m/d'),
+                'descricao' => $statusprocesso->descricao
+            ];
+            Movimento::create($insert);
+        }
+
+        $numprocesso = $request->input('numprocesso');
+
+        return redirect()->route('processos.index')->with('success', 'Processo '. $numprocesso .' atualizado com sucesso!');
     }
 }

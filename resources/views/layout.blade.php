@@ -78,7 +78,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div class="col-4">
-                <a class="navbar-brand" href="{{ url('/inicio') }}">HelpLawer</a>
+                <a class="navbar-brand" href="{{ url('/inicio') }}">HelpLawyer</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -134,7 +134,7 @@
         </header>
         <div class="jumbotron">
             <div class="container">
-                <h1 class="text-center">HelpLawer - Advogados</h1>
+                <h1 class="text-center">HelpLawyer - Advogados</h1>
             </div>
             <br><br>
             @yield('content')

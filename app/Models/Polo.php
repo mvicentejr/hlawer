@@ -9,7 +9,7 @@ class Polo extends Model
 {
     protected $table = 'polos';
 
-    protected $fillable = ['id', 'tipopolo', 'parte', 'cliente', 'processo'];
+    protected $fillable = ['id', 'tipopolo', 'parte', 'cliente', 'processo_id'];
 
     public $timestamps = false;
 
