@@ -108,7 +108,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-primary" href="#">Agenda</a>
                             <a class="dropdown-item text-primary" href="{{route('processos.index')}}">Processos</a>
-                            <a class="dropdown-item text-primary" href="#">Tarefas</a>
+                            <a class="dropdown-item text-primary" href="{{route('tarefas.index')}}">Tarefas</a>
                         </div>
                     </li>
                     <!--Relatórios-->

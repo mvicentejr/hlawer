@@ -9,7 +9,7 @@ class Tarefa extends Model
 {
     protected $table = 'tarefas';
 
-    protected $fillable = ['id', 'advogado', 'processo', 'statustarefa', 'tipotarefa', 'datatarefa',
+    protected $fillable = ['id', 'advogado', 'processo_id', 'statustarefa', 'tipotarefa', 'datatarefa',
                         'descricao', 'prazo'];
 
     public $timestamps = false;

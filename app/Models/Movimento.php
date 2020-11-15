@@ -9,7 +9,7 @@ class Movimento extends Model
 {
     protected $table = 'movimentos';
 
-    protected $fillable = ['id', 'processo', 'tipomov', 'datamov', 'descricao'];
+    protected $fillable = ['id', 'processo_id', 'tipomov', 'datamov', 'descricao'];
 
     public $timestamps = false;
 

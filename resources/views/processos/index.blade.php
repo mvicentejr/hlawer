@@ -45,6 +45,11 @@
     @endforeach
     </table>
 </div>
+<div class="col-12 pb-2">
+    <div class="control">
+        <a class="btn btn-secondary mr-2" href="{{ route('tarefas.index') }}">Tarefas</a>
+    </div>
+</div>
 <br><br>
 
 @if ($message = Session::get('success'))

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advogado;
 use App\Models\Area;
 use App\Models\Cliente;
 use App\Models\Movimento;
@@ -9,7 +10,11 @@ use App\Models\Parte;
 use App\Models\Polo;
 use App\Models\Processo;
 use App\Models\StatusProcesso;
+use App\Models\StatusTarefa;
+use App\Models\Tarefa;
+use App\Models\TipoMov;
 use App\Models\TipoPolo;
+use App\Models\TipoTarefa;
 use Illuminate\Http\Request;
 
 class ProcessosController extends Controller
@@ -81,8 +86,18 @@ class ProcessosController extends Controller
             $polo->parte = Parte::findOrFail($polo->parte);
             $polo->cliente = Cliente::findOrFail($polo->cliente);
         }
+        $movimentos = Movimento::query()->where('processo_id','=',$processo->id)->select(['*'])->orderBy('id')->get();
+        foreach ($movimentos as $movimento){
+            $movimento->tipomov = TipoMov::findOrFail($movimento->tipomov);
+        }
+        $tarefas = Tarefa::query()->where('processo_id','=',$processo->id)->select(['*'])->orderBy('tipotarefa')->get();
+        foreach ($tarefas as $tarefa){
+            $tarefa->advogado = Advogado::findOrFail($tarefa->advogado);
+            $tarefa->statustarefa = StatusTarefa::findOrFail($tarefa->statustarefa);
+            $tarefa->tipotarefa = TipoTarefa::findOrFail($tarefa->tipotarefa);
+        }
 
-        return view('processos.show', ['processo' => $processo, 'polos' => $polos]);
+        return view('processos.show', ['processo' => $processo, 'polos' => $polos, 'movimentos' => $movimentos, 'tarefas' => $tarefas]);
     }
 
     /**

@@ -78,8 +78,44 @@
             @endforeach
         </table>
     </div>
-    <br>
-    <a class="btn btn-dark" href="{{route('processos.index')}}">Voltar</a>
+    <br><br>
+    <div class="pull-right">
+        <h2 class="text-center">Movimentações</h2>
+    </div>
+    <div class="col-12 pb-2">
+        <div class="control">
+            <a class="btn btn-success" href="{{ route('movimentos.create', $processo->id) }}">Nova Movimentação</a>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th>Tipo</th>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+            @foreach ($movimentos as $movimento)
+            <tr>
+                <td>{{$movimento->tipomov->descricao}}</td>
+                <td>{{date('d/m/Y', strtotime($movimento->datamov))}}</td>
+                <td>{{$movimento->descricao}}</td>
+                <td>
+                    <a class="btn btn-info mr-2" href="{{ route('movimentos.show', $movimento->id) }}">Mostrar</a>
+                    <a class="btn btn-warning text-white mr-2" href="{{ route('movimentos.edit', $movimento->id) }}">Editar</a>
+                    <a class="btn btn-danger mr-2" href="{{ route('movimentos.apagar', $movimento->id) }}">Apagar</a>
+                </td>
+            </tr>
+            @endforeach
+        </table>
+    </div>
+    <br><br>
+    <div class="col-12 pb-2">
+        <div class="control">
+            <a class="btn btn-dark" href="{{route('processos.index')}}">Voltar</a>
+        </div>
+    </div>
 </div>
 
 <br><br>

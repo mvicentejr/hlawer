@@ -1,36 +1,35 @@
 @extends('layout')
 @section('content')
 <div class="pull-right">
-    <h2 class="text-center">Apagar Polo</h2>
+    <h2 class="text-center">Apagar Movimentação</h2>
 </div>
 <div class="jumbotron">
     <div class="col-lg-6 margin-tb">
-        <form class="form" action="{{ route('polos.destroy', $polo->id) }}" method="POST">
+        <form class="form" action="{{ route('movimentos.destroy', $movimento->id) }}" method="POST">
         @csrf
         @method('DELETE')
         <div class="field">
-            <strong>ID: </strong> {{$polo->id}}
+            <strong>ID: </strong> {{$movimento->id}}
         </div>
         <div class="field">
-            <strong>Tipo: </strong> {{$polo->tipopolo->descricao}}
+            <strong>Processo: </strong> {{$movimento->processo_id->numprocesso}}
         </div>
         <div class="field">
-            <strong>Parte: </strong> {{$polo->parte->descricao}}
+            <strong>Tipo: </strong> {{$movimento->tipomov->descricao}}
         </div>
         <div class="field">
-            <strong>Cliente: </strong> {{$polo->cliente->nome}}
+            <strong>Data: </strong> {{date('d/m/Y', strtotime($movimento->datamov))}}
         </div>
         <div class="field">
-            <strong>Processo: </strong> {{$polo->processo_id->numprocesso}}
+            <strong>Descrição: </strong> {{$movimento->descricao}}
         </div>
         <br>
         <div class="field">
             <h5>Tem certeza da remoção?</h5>
         </div>
-        <input type="hidden" name="processo_id" value="{{$polo->processo_id->id}}">
         <br><br>
         <input type="submit" class="button btn-danger mr-2" value="Apagar">
-        <a class="btn btn-dark mr-2" href="{{route('processos.show', $polo->processo_id->id)}}">Voltar</a>
+        <a class="btn btn-dark mr-2" href="{{route('processos.show', $movimento->processo_id->id)}}">Voltar</a>
     </form>
     </div>
 </div>

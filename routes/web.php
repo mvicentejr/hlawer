@@ -82,7 +82,7 @@ Route::group(['prefix' => '/polos'], function () {
 });
 
 Route::group(['prefix' => '/movimentos'], function () {
-    Route::get('/create', [MovimentosController::class, 'create'])->name('movimentos.create');
+    Route::get('/{id}/create', [MovimentosController::class, 'create'])->name('movimentos.create');
     Route::get('/{id}', [MovimentosController::class, 'show'])->name('movimentos.show');
     Route::post('/', [MovimentosController::class, 'store'])->name('movimentos.store');
     Route::get('/{id}/edit', [MovimentosController::class, 'edit'])->name('movimentos.edit');
@@ -99,6 +99,7 @@ Route::group(['prefix' => '/tarefas'], function () {
     Route::get('/{id}/edit', [TarefasController::class, 'edit'])->name('tarefas.edit');
     Route::put('/{id}', [TarefasController::class, 'update'])->name('tarefas.update');
     Route::delete('/{id}', [TarefasController::class, 'destroy'])->name('tarefas.destroy');
+    Route::get('/{id}/apagar', [TarefasController::class, 'apagar'])->name('tarefas.apagar');
 });
 
 Route::group(['prefix' => '/eventos'], function () {
