@@ -34,6 +34,7 @@
                 <a class="btn btn-info mr-2" href="{{ route('tarefas.show', $tarefa->id) }}">Mostrar</a>
                 <a class="btn btn-warning text-white mr-2" href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
                 <a class="btn btn-danger mr-2" href="{{ route('tarefas.apagar', $tarefa->id) }}">Apagar</a>
+                <a class="btn btn-secondary mr-2" href="{{ route('tarefas.finalizar', $tarefa->id) }}">Finalizar</a>
             </td>
         </tr>
         @endforeach

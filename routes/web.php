@@ -100,6 +100,8 @@ Route::group(['prefix' => '/tarefas'], function () {
     Route::put('/{id}', [TarefasController::class, 'update'])->name('tarefas.update');
     Route::delete('/{id}', [TarefasController::class, 'destroy'])->name('tarefas.destroy');
     Route::get('/{id}/apagar', [TarefasController::class, 'apagar'])->name('tarefas.apagar');
+    Route::put('/{id}/mudastatus', [TarefasController::class, 'mudastatus'])->name('tarefas.mudastatus');
+    Route::get('/{id}/finalizar', [TarefasController::class, 'finalizar'])->name('tarefas.finalizar');
 });
 
 Route::group(['prefix' => '/eventos'], function () {
@@ -110,4 +112,8 @@ Route::group(['prefix' => '/eventos'], function () {
     Route::get('/{id}/edit', [EventosController::class, 'edit'])->name('eventos.edit');
     Route::put('/{id}', [EventosController::class, 'update'])->name('eventos.update');
     Route::delete('/{id}', [EventosController::class, 'destroy'])->name('eventos.destroy');
+    Route::get('/{id}/apagar', [EventosController::class, 'apagar'])->name('eventos.apagar');
+    Route::put('/{id}/mudastatus', [EventosController::class, 'mudastatus'])->name('eventos.mudastatus');
+    Route::get('/{id}/finalizar', [EventosController::class, 'finalizar'])->name('eventos.finalizar');
+    Route::post('/getadvogado', [EventosController::class, 'getadvogado'])->name('eventos.getadvogado');
 });

@@ -106,7 +106,7 @@
                             Movimentos
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-primary" href="#">Agenda</a>
+                            <a class="dropdown-item text-primary" href="{{route('eventos.index')}}">Agenda</a>
                             <a class="dropdown-item text-primary" href="{{route('processos.index')}}">Processos</a>
                             <a class="dropdown-item text-primary" href="{{route('tarefas.index')}}">Tarefas</a>
                         </div>

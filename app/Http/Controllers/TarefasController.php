@@ -18,7 +18,7 @@ class TarefasController extends Controller
      */
     public function index()
     {
-        $tarefas = Tarefa::orderBy('statustarefa')->orderBy('tipotarefa')->orderBy('prazo')->get();
+        $tarefas = Tarefa::orderBy('statustarefa', 'DESC')->orderBy('tipotarefa')->orderBy('prazo')->get();
         foreach ($tarefas as $tarefa){
             $tarefa->advogado = Advogado::findOrFail($tarefa->advogado);
             $tarefa->processo_id = Processo::findOrFail($tarefa->processo_id);
@@ -159,6 +159,27 @@ class TarefasController extends Controller
         $tarefa->tipotarefa = TipoTarefa::findOrFail($tarefa->tipotarefa);
 
         return view('tarefas.apagar', ['tarefa' => $tarefa]);
+
+    }
+
+    public function mudastatus($id)
+    {
+        $tarefa = Tarefa::findOrFail($id);
+        $tarefa->statustarefa = 1;
+        $tarefa->update();
+
+        return redirect()->route('tarefas.index')->with('success', 'Tarefa finalizada com sucesso!');
+    }
+
+    public function finalizar($id)
+    {
+        $tarefa = Tarefa::findOrFail($id);
+        $tarefa->advogado = Advogado::findOrFail($tarefa->advogado);
+        $tarefa->processo_id = Processo::findOrFail($tarefa->processo_id);
+        $tarefa->statustarefa = StatusTarefa::findOrFail($tarefa->statustarefa);
+        $tarefa->tipotarefa = TipoTarefa::findOrFail($tarefa->tipotarefa);
+
+        return view('tarefas.finalizar', ['tarefa' => $tarefa]);
 
     }
 
