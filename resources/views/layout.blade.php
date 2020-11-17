@@ -122,7 +122,7 @@
                           <a class="dropdown-item text-primary" href="#">Eventos</a>
                           <a class="dropdown-item text-primary" href="#">Movimentações</a>
                           <a class="dropdown-item text-primary" href="#">Processos</a>
-                          <a class="dropdown-item text-primary" href="#">Tarefas</a>
+                          <a class="dropdown-item text-primary" href="{{route('reltarefas.index')}}">Tarefas</a>
                         </div>
                     </li>
                     <li class="nav-item">

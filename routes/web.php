@@ -8,6 +8,7 @@ use App\Http\Controllers\PolosController;
 use App\Http\Controllers\ProcessosController;
 use App\Http\Controllers\RelAdvogadosController;
 use App\Http\Controllers\RelClientesController;
+use App\Http\Controllers\RelTarefasController;
 use App\Http\Controllers\TarefasController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
@@ -130,4 +131,10 @@ Route::group(['prefix' => '/reladvogados'], function () {
     Route::get('/', [RelAdvogadosController::class, 'index'])->name('reladvogados.index');
     Route::get('/geral',[RelAdvogadosController::class, 'geral'])->name('reladvogados.geral');
     Route::post('/area',[RelAdvogadosController::class, 'area'])->name('reladvogados.area');
+});
+
+Route::group(['prefix' => '/reltarefas'], function () {
+    Route::get('/', [RelTarefasController::class, 'index'])->name('reltarefas.index');
+    Route::post('/status',[RelTarefasController::class, 'status'])->name('reltarefas.status');
+    Route::post('/advogado',[RelTarefasController::class, 'advogado'])->name('reltarefas.advogado');
 });
