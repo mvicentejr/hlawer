@@ -119,20 +119,20 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item text-primary" href="{{route('reladvogados.index')}}">Advogados</a>
                           <a class="dropdown-item text-primary" href="{{route('relclientes.index')}}">Clientes</a>
-                          <a class="dropdown-item text-primary" href="#">Eventos</a>
-                          <a class="dropdown-item text-primary" href="#">Movimentações</a>
+                          <a class="dropdown-item text-primary" href="{{route('releventos.index')}}">Eventos</a>
+                          <a class="dropdown-item text-primary" href="{{route('relmovimentos.index')}}">Movimentações</a>
                           <a class="dropdown-item text-primary" href="#">Processos</a>
                           <a class="dropdown-item text-primary" href="{{route('reltarefas.index')}}">Tarefas</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Sobre</span></a>
+                        <a class="nav-link text-white" href="{{ url('/sobre') }}">Sobre</span></a>
                     </li>
                     </ul>
                 </div>
                 </div>
                 <div class="col-1">
-                    <a class="text-light">Sair<a>
+                    <a class="text-light" href="{{ url('/login') }}">Sair<a>
                 </div>
               </nav>
         </header>

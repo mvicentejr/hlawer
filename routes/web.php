@@ -8,6 +8,8 @@ use App\Http\Controllers\PolosController;
 use App\Http\Controllers\ProcessosController;
 use App\Http\Controllers\RelAdvogadosController;
 use App\Http\Controllers\RelClientesController;
+use App\Http\Controllers\RelEventosController;
+use App\Http\Controllers\RelMovimentosController;
 use App\Http\Controllers\RelTarefasController;
 use App\Http\Controllers\TarefasController;
 use App\Http\Controllers\UsuariosController;
@@ -30,6 +32,14 @@ Route::get('/', function () {
 
 Route::get('/inicio', function () {
     return view('inicio');
+});
+
+Route::get('/sobre', function () {
+    return view('sobre');
+});
+
+Route::get('/login', function () {
+    return view('login');
 });
 
 Route::group(['prefix' => '/clientes'], function () {
@@ -137,4 +147,16 @@ Route::group(['prefix' => '/reltarefas'], function () {
     Route::get('/', [RelTarefasController::class, 'index'])->name('reltarefas.index');
     Route::post('/status',[RelTarefasController::class, 'status'])->name('reltarefas.status');
     Route::post('/advogado',[RelTarefasController::class, 'advogado'])->name('reltarefas.advogado');
+});
+
+Route::group(['prefix' => '/relmovimentos'], function () {
+    Route::get('/', [RelMovimentosController::class, 'index'])->name('relmovimentos.index');
+    Route::post('/tipo',[RelMovimentosController::class, 'tipo'])->name('relmovimentos.tipo');
+    Route::post('/processo',[RelMovimentosController::class, 'processo'])->name('relmovimentos.processo');
+});
+
+Route::group(['prefix' => '/releventos'], function () {
+    Route::get('/', [RelEventosController::class, 'index'])->name('releventos.index');
+    Route::post('/periodo',[RelEventosController::class, 'periodo'])->name('releventos.periodo');
+    Route::post('/advogado',[RelEventosController::class, 'advogado'])->name('releventos.advogado');
 });
