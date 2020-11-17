@@ -121,7 +121,7 @@
                           <a class="dropdown-item text-primary" href="{{route('relclientes.index')}}">Clientes</a>
                           <a class="dropdown-item text-primary" href="{{route('releventos.index')}}">Eventos</a>
                           <a class="dropdown-item text-primary" href="{{route('relmovimentos.index')}}">Movimentações</a>
-                          <a class="dropdown-item text-primary" href="#">Processos</a>
+                          <a class="dropdown-item text-primary" href="{{route('relprocessos.index')}}">Processos</a>
                           <a class="dropdown-item text-primary" href="{{route('reltarefas.index')}}">Tarefas</a>
                         </div>
                     </li>

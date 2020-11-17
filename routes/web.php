@@ -10,6 +10,7 @@ use App\Http\Controllers\RelAdvogadosController;
 use App\Http\Controllers\RelClientesController;
 use App\Http\Controllers\RelEventosController;
 use App\Http\Controllers\RelMovimentosController;
+use App\Http\Controllers\RelProcessosController;
 use App\Http\Controllers\RelTarefasController;
 use App\Http\Controllers\TarefasController;
 use App\Http\Controllers\UsuariosController;
@@ -159,4 +160,11 @@ Route::group(['prefix' => '/releventos'], function () {
     Route::get('/', [RelEventosController::class, 'index'])->name('releventos.index');
     Route::post('/periodo',[RelEventosController::class, 'periodo'])->name('releventos.periodo');
     Route::post('/advogado',[RelEventosController::class, 'advogado'])->name('releventos.advogado');
+});
+
+Route::group(['prefix' => '/relprocessos'], function () {
+    Route::get('/', [RelProcessosController::class, 'index'])->name('relprocessos.index');
+    Route::post('/status',[RelProcessosController::class, 'status'])->name('relprocessos.status');
+    Route::post('/area',[RelProcessosController::class, 'area'])->name('relprocessos.area');
+    Route::post('/cliente',[RelProcessosController::class, 'cliente'])->name('relprocessos.cliente');
 });
