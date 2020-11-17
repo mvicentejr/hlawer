@@ -117,8 +117,12 @@
                         Relatórios
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item text-primary" href="#">Clientes</a>
-
+                          <a class="dropdown-item text-primary" href="{{route('reladvogados.index')}}">Advogados</a>
+                          <a class="dropdown-item text-primary" href="{{route('relclientes.index')}}">Clientes</a>
+                          <a class="dropdown-item text-primary" href="#">Eventos</a>
+                          <a class="dropdown-item text-primary" href="#">Movimentações</a>
+                          <a class="dropdown-item text-primary" href="#">Processos</a>
+                          <a class="dropdown-item text-primary" href="#">Tarefas</a>
                         </div>
                     </li>
                     <li class="nav-item">

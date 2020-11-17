@@ -6,6 +6,8 @@ use App\Http\Controllers\EventosController;
 use App\Http\Controllers\MovimentosController;
 use App\Http\Controllers\PolosController;
 use App\Http\Controllers\ProcessosController;
+use App\Http\Controllers\RelAdvogadosController;
+use App\Http\Controllers\RelClientesController;
 use App\Http\Controllers\TarefasController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
@@ -116,4 +118,16 @@ Route::group(['prefix' => '/eventos'], function () {
     Route::put('/{id}/mudastatus', [EventosController::class, 'mudastatus'])->name('eventos.mudastatus');
     Route::get('/{id}/finalizar', [EventosController::class, 'finalizar'])->name('eventos.finalizar');
     Route::post('/getadvogado', [EventosController::class, 'getadvogado'])->name('eventos.getadvogado');
+});
+
+Route::group(['prefix' => '/relclientes'], function () {
+    Route::get('/', [RelClientesController::class, 'index'])->name('relclientes.index');
+    Route::get('/geral',[RelClientesController::class, 'geral'])->name('relclientes.geral');
+    Route::post('/tipo',[RelClientesController::class, 'tipo'])->name('relclientes.tipo');
+});
+
+Route::group(['prefix' => '/reladvogados'], function () {
+    Route::get('/', [RelAdvogadosController::class, 'index'])->name('reladvogados.index');
+    Route::get('/geral',[RelAdvogadosController::class, 'geral'])->name('reladvogados.geral');
+    Route::post('/area',[RelAdvogadosController::class, 'area'])->name('reladvogados.area');
 });
